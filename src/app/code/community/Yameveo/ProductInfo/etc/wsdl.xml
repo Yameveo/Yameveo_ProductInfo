@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <complexType name="catalogProductReturnEntity">
+                <all>
+                    <element name="parent_sku" type="xsd:string" minOccurs="0"/>
+                    <element name="url_complete" type="xsd:string" minOccurs="0"/>
+                    <element name="configurable_products_data" type="typens:childrenEntityArray" minOccurs="0"/>
+                    <element name="configurable_attributes_data" type="typens:configurableOptionsEntityArray"
+                             minOccurs="0"/>
+                    <element name="stock_data" type="typens:catalogInventoryStockItemEntityArray" minOccurs="0"/>
+                    <element name="images" type="typens:catalogProductImageEntityArray" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="childrenEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:childrenEntity[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="childrenEntity">
+                <all>
+                    <element name="sku" type="xsd:string" minOccurs="0"/>
+                    <element name="options" type="typens:optionsEntityArray" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="configurableOptionsEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:configurableOptionsEntity[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="configurableOptionsEntity">
+                <all>
+                    <element name="code" type="xsd:string" minOccurs="0"/>
+                    <element name="options" type="typens:optionsEntityArray" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="optionsEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:optionsEntity[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="optionsEntity">
+                <all>
+                    <element name="product_super_attribute_id" type="xsd:string" minOccurs="0"/>
+                    <element name="value_index" type="xsd:string" minOccurs="0"/>
+                    <element name="label" type="xsd:string" minOccurs="0"/>
+                    <element name="default_label" type="xsd:string" minOccurs="0"/>
+                    <element name="store_label" type="xsd:string" minOccurs="0"/>
+                    <element name="is_percent" type="xsd:int" minOccurs="0"/>
+                    <element name="pricing_value" type="xsd:double" minOccurs="0"/>
+                    <element name="use_default_value" type="xsd:boolean" minOccurs="0"/>
+                    <element name="attribute_code" type="xsd:string" minOccurs="0"/>
+                </all>
+            </complexType>
+        </schema>
+    </types>
+</definitions>
