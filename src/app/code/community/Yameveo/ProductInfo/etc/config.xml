@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Yameveo_ProductInfo>
+            <version>1.0.0</version>
+        </Yameveo_ProductInfo>
+    </modules>
+    <global>
+        <blocks>
+            <yameveo_productinfo>
+                <class>Yameveo_ProductInfo_Block</class>
+            </yameveo_productinfo>
+        </blocks>
+        <helpers>
+            <yameveo_productinfo>
+                <class>Yameveo_ProductInfo_Helper</class>
+            </yameveo_productinfo>
+        </helpers>
+        <models>
+            <yameveo_productinfo>
+                <class>Yameveo_ProductInfo_Model</class>
+            </yameveo_productinfo>
+        </models>
+    </global>
+</config>

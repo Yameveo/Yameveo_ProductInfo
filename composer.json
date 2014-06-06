@@ -1,0 +1,15 @@
+{
+    "name": "Yameveo/ProductInfo",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Simple SOAP API Extension",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+        {
+            "name":"Andrea De Pirro",
+            "email":"andrea.depirro@yameveo.com"
+        }
+    ]
+}
