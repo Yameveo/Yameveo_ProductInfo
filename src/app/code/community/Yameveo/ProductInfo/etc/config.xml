@@ -20,6 +20,12 @@
             <yameveo_productinfo>
                 <class>Yameveo_ProductInfo_Model</class>
             </yameveo_productinfo>
+            <catalog>
+                <rewrite>
+                    <product_api>Yameveo_ProductInfo_Model_Catalog_Product_Api</product_api>
+                    <product_api_v2>Yameveo_ProductInfo_Model_Catalog_Product_Api_V2</product_api_v2>
+                </rewrite>
+            </catalog>
         </models>
     </global>
 </config>
