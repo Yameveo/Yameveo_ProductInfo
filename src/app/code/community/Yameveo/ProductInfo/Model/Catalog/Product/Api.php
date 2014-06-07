@@ -10,15 +10,14 @@
  */
 class Yameveo_ProductInfo_Model_Catalog_Product_Api extends Mage_Catalog_Model_Product_Api
 {
-
     /**
      * Retrieve product info.
      * Optional attributes configurable_attributes_data and configurable_products_data
-     * show info on children products and confiurable options
+     * show info on children products and configurable options
      *
      * @param int|string $productId
      * @param string|int $store
-     * @param stdClass $attributes
+     * @param array $attributes
      * @param string $identifierType (sku or null)
      * @return array
      */
@@ -27,7 +26,6 @@ class Yameveo_ProductInfo_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
         $product = $this->_getProduct($productId, $store, $identifierType);
         $attributes = is_null($attributes) ? array() : $attributes;
         $all_attributes = in_array('*', $attributes);
-
         $result = array( // Basic product data
             'product_id' => $product->getId(),
             'sku' => $product->getSku(),
@@ -86,9 +84,7 @@ class Yameveo_ProductInfo_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
                     $k++;
                 }
                 $result['configurable_attributes_data'] = $options;
-            }
-            // children
-            if (in_array('configurable_products_data', $attributes) || $all_attributes) {
+                // children
                 // @todo use $childProducts = $product->getTypeInstance()->getUsedProducts();
                 $childProducts = Mage::getModel('catalog/product_type_configurable')
                     ->getUsedProducts(null, $product);
@@ -108,6 +104,7 @@ class Yameveo_ProductInfo_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
                 $result['configurable_products_data'] = $skus;
             }
         }
+
         return $result;
     }
 
