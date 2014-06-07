@@ -2,7 +2,7 @@
     "name": "Yameveo/ProductInfo",
     "license": "OSL-3.0",
     "type": "magento-module",
-    "description": "Simple SOAP API Extension to catalogProductInfo",
+    "description": "Simple Magento SOAP API Extension to catalogProductInfo",
     "require": {
         "magento-hackathon/magento-composer-installer": "*"
     },

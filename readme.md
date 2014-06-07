@@ -1,13 +1,13 @@
 Yameveo ProductInfo Extension
 =====================
-Simple SOAP API Extension
+Simple Magento SOAP API Extension to catalogProductInfo
 Facts
 -----
 - version: 1.0.0
 - extension key: Yameveo_ProductInfo
 - Magento Connect 1.0 extension key: Not yet on Magento Connect
 - Magento Connect 2.0 extension key: Not yet on Magento Connect
-- [extension on GitHub](https://github.com/yameveo/Yameveo_ProductInfo
+- [extension on GitHub](https://github.com/yameveo/Yameveo_ProductInfo)
 
 Description
 -----------
