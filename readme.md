@@ -3,39 +3,65 @@ Yameveo ProductInfo Extension
 Simple SOAP API Extension
 Facts
 -----
-- version: 0.1.0
+- version: 1.0.0
 - extension key: Yameveo_ProductInfo
-- [extension on Magento Connect](http://www.magentocommerce.com/magento-connect/yameveo)-productinfo-1234.html)
-- Magento Connect 1.0 extension key: magento-community/Yameveo_ProductInfo
-- Magento Connect 2.0 extension key: http://connect20.magentocommerce.com/community/Yameveo_ProductInfo
+- Magento Connect 1.0 extension key: Not yet on Magento Connect
+- Magento Connect 2.0 extension key: Not yet on Magento Connect
 - [extension on GitHub](https://github.com/yameveo/Yameveo_ProductInfo
-- [direct download link](http://connect.magentocommerce.com/community/get/Yameveo_ProductInfo-1.0.0.tgz)
 
 Description
 -----------
-This paragraph describes what the extension does.
+This Magento extensions add some features to catalogProductInfo SOAP API call for V1 and V2. Get all product's attributes, including stock info and images. Get configurable's subproducts informations in the same response.
+
+Usage
+----------
+
+SOAP API V1
+```php
+// connect to soap server
+$client = new SoapClient('http://store.dev/api/soap?wsdl=1',  array('cache_wsdl' => WSDL_CACHE_NONE, 'trace' => 1));
+
+// log in
+$session = $client->login('user', 'apikey');
+
+$product = $client->call($session, 'catalog_product.info', array(126, null, array('*')));
+```
+
+SOAP API V2
+```php
+// connect to soap server
+$client = new SoapClient('http://store.dev/api/v2_soap?wsdl=1',  array('cache_wsdl' => WSDL_CACHE_NONE, 'trace' => 1));
+
+// log in
+$session = $client->login('user', 'apikey');
+
+$attributes = new stdclass();
+$attributes->attributes = array('*');
+$product = $client->catalogProductInfo($session, 126, null, $attributes);
+```
 
 Requirements
 ------------
 - PHP >= 5.2.0
 - Mage_Core
-- ...
+- Mage_Api
 
 Compatibility
 -------------
-- Magento >= 1.4
+- Magento >= 1.6
 
 Installation Instructions
 -------------------------
-1. Install the extension via Magento Connect with the key shown above or copy all the files into your document root.
-2. Clear the cache, logout from the admin panel and then login again.
-3. Configure and activate the extension under System - Configuration - Company - Example Extension.
-4. ...
+1. Install [modman](https://github.com/colinmollenhour/modman)
+2. cd /var/www/store      # Magento is installed here
+3. modman init            # This is only done once in the application root
+4. modman clone git@github.com:Yameveo/Yameveo_ProductInfo.git
+
+The module will also be published on composer firegento repository.
 
 Uninstallation
 --------------
 1. Remove all extension files from your Magento installation
-2. ...
 
 Support
 -------
@@ -47,14 +73,12 @@ Any contribution is highly appreciated. The best way to contribute code is to op
 
 Developer
 ---------
-Andrea De Pirro
-[http://www.firstname-lastname.com](http://www.firstname-lastname.com)
-[@FirstNameLastName](https://twitter.com/FirstNameLastName)
+Andrea De Pirro [@akira28](https://twitter.com/akira28)
+
+[http://www.yameveo.com](http://www.yameveo.com)
+
+
 
 Licence
 -------
 [OSL - Open Software Licence 3.0](http://opensource.org/licenses/osl-3.0.php)
-
-Copyright
----------
-(c) 2014 Yameveo
