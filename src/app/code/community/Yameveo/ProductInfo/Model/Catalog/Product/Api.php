@@ -24,6 +24,8 @@ class Yameveo_ProductInfo_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
      */
     public function info($productId, $store = null, $attributes = array(), $identifierType = null)
     {
+
+        Mage::app()->setCurrentStore($store);
         $product = $this->_getProduct($productId, $store, $identifierType);
         $attributes = is_null($attributes) ? array() : $attributes;
         $all_attributes = in_array('*', $attributes);
@@ -71,12 +73,15 @@ class Yameveo_ProductInfo_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
                 $result['parent_sku'] = $parent->getSku();
             }
         } elseif ($product->isConfigurable()) {
+
             $attributesData = $product->getTypeInstance()->getConfigurableAttributesAsArray();
+
             // configurable_options
             if (in_array('configurable_attributes_data', $attributes) || $all_attributes) {
                 $options = array();
                 $k = 0;
                 foreach ($attributesData as $attribute) {
+                    $options[$k]['label'] = $attribute['store_label'];
                     $options[$k]['code'] = $attribute['attribute_code'];
                     foreach ($attribute['values'] as $value) {
                         $value['attribute_code'] = $attribute['attribute_code'];
